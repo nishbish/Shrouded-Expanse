@@ -19,6 +19,12 @@ class RenderManager {
             this.app.controls.update();
         }
 
+        if (this.app.cameraManager) {
+            for (const plane of this.app.planes) {
+                plane.lookAt(this.app.cameraManager.camera.position.clone());
+            }
+        }
+
 		this.renderer.render( this.app.scene, this.app.cameraManager.camera );
 	}
 }
