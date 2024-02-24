@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
-class SERenderer {
-    constructor(se) {
-        this.se = se;
+class RenderManager {
+    constructor(app) {
+        this.app = app;
         this.renderer = new THREE.WebGLRenderer();
 
         this.renderer.setSize( window.innerWidth, window.innerHeight );
@@ -15,12 +15,12 @@ class SERenderer {
     animate() {
 		requestAnimationFrame(() => this.animate());
 
-		if (this.se.controls) {
-            this.se.controls.update();
+		if (this.app.controls) {
+            this.app.controls.update();
         }
 
-		this.renderer.render( this.se.scene, this.se.camera );
+		this.renderer.render( this.app.scene, this.app.cameraManager.camera );
 	}
 }
 
-export { SERenderer }
+export { RenderManager }
